@@ -43,45 +43,15 @@
     revealTargets.forEach((el) => observer.observe(el));
   }
 
-  // ===== Gallery / Team slider =====
-  const track = document.getElementById('galleryTrack');
-  if (track) {
-    const dotsWrap = document.getElementById('galleryDots');
-    const prevBtn = document.getElementById('galleryPrev');
-    const nextBtn = document.getElementById('galleryNext');
-    const slides = Array.from(track.children);
-
-    slides.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.setAttribute('role', 'tab');
-      dot.setAttribute('aria-label', `Слайд ${i + 1}`);
-      dot.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' }));
-      dotsWrap.appendChild(dot);
+  // ===== Work cards hover effect =====
+  document.querySelectorAll('.work-card').forEach((card) => {
+    card.addEventListener('mouseenter', () => {
+      card.querySelector('.work-card-overlay').style.opacity = '1';
     });
-    const dots = Array.from(dotsWrap.children);
-
-    const updateActive = () => {
-      const trackRect = track.getBoundingClientRect();
-      let closestIndex = 0;
-      let closestDist = Infinity;
-      slides.forEach((slide, i) => {
-        const dist = Math.abs(slide.getBoundingClientRect().left - trackRect.left);
-        if (dist < closestDist) { closestDist = dist; closestIndex = i; }
-      });
-      dots.forEach((d, i) => d.classList.toggle('active', i === closestIndex));
-    };
-    updateActive();
-    track.addEventListener('scroll', () => {
-      window.requestAnimationFrame(updateActive);
-    }, { passive: true });
-
-    const scrollByStep = (dir) => {
-      const step = slides[0].getBoundingClientRect().width + 18;
-      track.scrollBy({ left: step * dir, behavior: 'smooth' });
-    };
-    prevBtn.addEventListener('click', () => scrollByStep(-1));
-    nextBtn.addEventListener('click', () => scrollByStep(1));
-  }
+    card.addEventListener('mouseleave', () => {
+      card.querySelector('.work-card-overlay').style.opacity = '0';
+    });
+  });
 
   // ===== Booking form -> Telegram =====
   const form = document.getElementById('bookingForm');
@@ -106,7 +76,6 @@
 
     const name = form.name.value.trim();
     const phone = form.phone.value.trim();
-    const master = form.master ? form.master.value.trim() : '';
     const comment = form.comment.value.trim();
 
     let firstInvalid = null;
@@ -133,12 +102,13 @@
     statusEl.textContent = '';
     statusEl.className = 'booking-status';
 
+    const service = form.service ? form.service.value.trim() : '';
     const text = [
-      '✂️ Нова заявка з сайту Барбершоп «El Salvador»',
+      '💜 Нова заявка з сайту Салон краси «KARI»',
       '',
       `Ім'я: ${name}`,
       `Телефон: ${phone}`,
-      `Майстер: ${master || '—'}`,
+      `Послуга: ${service || '—'}`,
       `Побажання: ${comment || '—'}`
     ].join('\n');
 
