@@ -577,7 +577,13 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
   .hero-sub { font-size: 0.9rem; margin-bottom: 24px; }
   .hero-actions { flex-direction: column; align-items: stretch; gap: 12px; margin-bottom: 20px; }
   .hero-actions .btn { width: 100%; justify-content: center; padding: 16px; }
-  .hero-meta { flex-direction: column; gap: 3px; font-size: 12px; }
+  .hero-meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2px 8px;
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
 
   /* Trust bar */
   .trust-bar { padding: 28px 0; }
@@ -593,9 +599,25 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
   .section-title { font-size: clamp(1.65rem, 7vw, 2.1rem); }
   .section-desc { font-size: 14.5px; }
 
-  /* Price cards */
-  .price-grid { grid-template-columns: 1fr; gap: 14px; }
-  .price-card { padding: 22px 20px; }
+  /* Price cards — horizontal scroll */
+  .price-grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 14px;
+    padding-bottom: 14px;
+    align-items: start;
+    scrollbar-width: none;
+  }
+  .price-grid::-webkit-scrollbar { display: none; }
+  .price-card {
+    flex: 0 0 82vw;
+    max-width: 340px;
+    padding: 22px 20px;
+    scroll-snap-align: start;
+  }
   .price-card:nth-child(2) { margin-top: 0; padding-top: 22px; border-top-width: 2px; }
   .price-card-header { margin-bottom: 16px; padding-bottom: 14px; }
   .price-card-header h3 { font-size: 16.5px; }
@@ -604,10 +626,27 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
   .price-name { font-size: 13px; }
   .price-val { font-size: 14px; }
 
-  /* Works */
+  /* Works — horizontal scroll, one big card */
   .works-section { padding: 56px 0; }
-  .works-grid { grid-template-columns: 1fr; gap: 12px; }
-  .work-card { aspect-ratio: 4/3; }
+  .works-section .container { overflow: visible; }
+  .works-grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    padding: 0 24px 14px;
+    margin: 0 -24px;
+    scrollbar-width: none;
+  }
+  .works-grid::-webkit-scrollbar { display: none; }
+  .work-card {
+    flex: 0 0 88vw;
+    aspect-ratio: 3/4;
+    scroll-snap-align: center;
+    border-radius: var(--radius-md);
+  }
   .works-cta { margin-top: 28px; }
 
   /* About */
@@ -621,10 +660,27 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
   .about-actions { flex-direction: column; gap: 12px; }
   .about-actions .btn { width: 100%; justify-content: center; }
 
-  /* Reviews */
-  .reviews-grid { grid-template-columns: 1fr; gap: 36px; }
+  /* Reviews — horizontal scroll */
+  .reviews-section .container { overflow: visible; }
+  .reviews-grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    padding: 0 24px 14px;
+    margin: 0 -24px;
+    scrollbar-width: none;
+  }
+  .reviews-grid::-webkit-scrollbar { display: none; }
+  .review-card {
+    flex: 0 0 78vw;
+    max-width: 300px;
+    scroll-snap-align: center;
+  }
   .review-icon { width: 56px; height: 56px; }
-  .review-text { font-size: 14px; max-width: 100%; padding: 0 8px; }
+  .review-text { font-size: 14px; max-width: 100%; padding: 0 4px; }
   .review-stars { font-size: 16px; }
 
   /* Booking */
@@ -661,8 +717,6 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
   .container { padding: 0 16px; }
   .hero-title { font-size: clamp(2.1rem, 10vw, 2.8rem); }
   .trust-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
-  .works-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-  .work-card { aspect-ratio: 3/4; }
   .booking-section { padding: 60px 0; }
   .mobile-cta { padding: 13px 24px; font-size: 13.5px; bottom: 14px; }
   .btn-lg { padding: 15px 22px; font-size: 14px; }
