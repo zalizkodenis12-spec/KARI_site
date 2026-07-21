@@ -548,6 +548,7 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
    =================================================== */
 @media (max-width: 1024px) {
   .price-grid { grid-template-columns: 1fr 1fr; }
+  .price-card:nth-child(2) { margin-top: 0; }
   .trust-grid { grid-template-columns: repeat(2, 1fr); }
   .about-grid { gap: 40px; }
   .contacts-grid { grid-template-columns: 1fr; }
@@ -564,73 +565,118 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
   .burger { display: flex; }
   .mobile-cta { display: flex; }
 
-  /* Hero */
-  .hero { padding-top: 72px; min-height: 100svh; }
-  .hero-title { font-size: clamp(2.6rem, 11vw, 3.5rem); }
-  .hero-sub { font-size: 0.95rem; }
-  .hero-actions { flex-direction: column; align-items: stretch; gap: 12px; }
-  .hero-actions .btn { width: 100%; justify-content: center; }
-  .hero-meta { flex-direction: column; gap: 4px; font-size: 12px; }
+  /* Header */
+  .site-header { padding: 14px 0; }
+  .logo-text strong { font-size: 1.1em; letter-spacing: 0.14em; }
 
-  /* Trust */
-  .trust-bar { padding: 32px 0; }
-  .trust-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  /* Hero */
+  .hero { padding-top: 70px; min-height: 100svh; }
+  .hero-inner { max-width: 100%; padding-bottom: 40px; }
+  .hero-title { font-size: clamp(2.4rem, 10vw, 3.2rem); margin-bottom: 16px; }
+  .hero-title em { font-size: 1.05em; }
+  .hero-sub { font-size: 0.9rem; margin-bottom: 24px; }
+  .hero-actions { flex-direction: column; align-items: stretch; gap: 12px; margin-bottom: 20px; }
+  .hero-actions .btn { width: 100%; justify-content: center; padding: 16px; }
+  .hero-meta { flex-direction: column; gap: 3px; font-size: 12px; }
+
+  /* Trust bar */
+  .trust-bar { padding: 28px 0; }
+  .trust-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
   .trust-item { flex-direction: column; gap: 8px; text-align: center; align-items: center; }
   .trust-item svg { width: 26px; height: 26px; }
+  .trust-item strong { font-size: 13.5px; }
+  .trust-item span { font-size: 12px; }
 
   /* Sections */
-  .section { padding: 64px 0; }
-  .section-head { margin-bottom: 36px; }
-  .section-title { font-size: clamp(1.7rem, 6.5vw, 2.2rem); }
-  .section-desc { font-size: 15px; }
+  .section { padding: 56px 0; }
+  .section-head { margin-bottom: 32px; }
+  .section-title { font-size: clamp(1.65rem, 7vw, 2.1rem); }
+  .section-desc { font-size: 14.5px; }
 
-  /* Price */
-  .price-grid { grid-template-columns: 1fr; gap: 16px; }
-  .price-card { padding: 24px; }
-  .price-card-header h3 { font-size: 17px; }
+  /* Price cards */
+  .price-grid { grid-template-columns: 1fr; gap: 14px; }
+  .price-card { padding: 22px 20px; }
+  .price-card:nth-child(2) { margin-top: 0; padding-top: 22px; border-top-width: 2px; }
+  .price-card-header { margin-bottom: 16px; padding-bottom: 14px; }
+  .price-card-header h3 { font-size: 16.5px; }
+  .price-icon { width: 40px; height: 40px; border-radius: 10px; }
+  .price-list li { padding: 9px 0; }
+  .price-name { font-size: 13px; }
+  .price-val { font-size: 14px; }
 
   /* Works */
-  .works-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .works-section { padding: 56px 0; }
+  .works-grid { grid-template-columns: 1fr; gap: 12px; }
+  .work-card { aspect-ratio: 4/3; }
+  .works-cta { margin-top: 28px; }
 
   /* About */
-  .about-grid { grid-template-columns: 1fr; gap: 32px; }
-  .about-media { order: -1; aspect-ratio: 16/10; }
+  .about-section { padding: 56px 0; }
+  .about-grid { grid-template-columns: 1fr; gap: 28px; }
+  .about-media { order: -1; aspect-ratio: 16/10; border-radius: 14px; }
   .about-media img { object-position: center; }
-  .about-content p { font-size: 15px; }
+  .about-content p { font-size: 14.5px; }
+  .about-list { gap: 10px; }
+  .about-list li { font-size: 14px; }
+  .about-actions { flex-direction: column; gap: 12px; }
+  .about-actions .btn { width: 100%; justify-content: center; }
 
   /* Reviews */
-  .reviews-grid { grid-template-columns: 1fr; gap: 20px; }
+  .reviews-grid { grid-template-columns: 1fr; gap: 36px; }
+  .review-icon { width: 56px; height: 56px; }
+  .review-text { font-size: 14px; max-width: 100%; padding: 0 8px; }
+  .review-stars { font-size: 16px; }
 
   /* Booking */
-  .booking-section { padding: 80px 0; }
-  .ghost-watermark { font-size: 20vw; letter-spacing: 0; }
-  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .booking-section { padding: 72px 0; }
+  .ghost-watermark { font-size: 22vw; letter-spacing: 0; }
+  .booking-inner { padding: 0 4px; }
   .booking-form { max-width: 100%; }
+  .field input, .field textarea { font-size: 16px; } /* prevent iOS zoom */
+  .btn-block { font-size: 15px; padding: 15px; }
 
   /* Contacts */
-  .contacts-section { padding: 64px 0; }
-  .contacts-grid { grid-template-columns: 1fr; }
-  .map-wrap { min-height: 280px; }
-  .contacts-info { padding: 24px; }
+  .contacts-section { padding: 56px 0; }
+  .contacts-grid { grid-template-columns: 1fr; gap: 20px; }
+  .map-wrap { min-height: 260px; border-radius: 14px; }
+  .contacts-info { padding: 22px 20px; border-radius: 14px; }
+  .contacts-info h3 { font-size: 19px; margin-bottom: 18px; }
+  .info-row { padding: 12px 0; }
+  .info-row dd { font-size: 14.5px; }
 
   /* Footer */
-  .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 18px; }
-  .footer-nav { justify-content: center; gap: 16px; }
-  .footer-bottom { flex-direction: column; align-items: center; text-align: center; font-size: 11px; }
-  body { padding-bottom: 70px; }
+  .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 16px; padding-bottom: 24px; }
+  .footer-nav { justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .footer-nav a { font-size: 12.5px; }
+  .footer-bottom { flex-direction: column; align-items: center; text-align: center; font-size: 11px; gap: 4px; }
+
+  /* Padding for fixed mobile CTA */
+  body { padding-bottom: 76px; }
 }
 
 /* ===================================================
-   RESPONSIVE — Small mobile (≤ 400px)
+   RESPONSIVE — Small mobile (≤ 480px)
    =================================================== */
-@media (max-width: 400px) {
+@media (max-width: 480px) {
   .container { padding: 0 16px; }
-  .hero-title { font-size: 2.4rem; }
-  .hero-badge { font-size: 11.5px; padding: 7px 14px; }
-  .trust-grid { grid-template-columns: 1fr; }
-  .trust-item { flex-direction: row; text-align: left; align-items: flex-start; }
-  .works-grid { grid-template-columns: 1fr 1fr; }
-  .review-card { padding: 20px; }
-  .mobile-cta { padding: 12px 22px; font-size: 13px; }
-  .btn-lg { padding: 15px 24px; font-size: 14px; }
+  .hero-title { font-size: clamp(2.1rem, 10vw, 2.8rem); }
+  .trust-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .works-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .work-card { aspect-ratio: 3/4; }
+  .booking-section { padding: 60px 0; }
+  .mobile-cta { padding: 13px 24px; font-size: 13.5px; bottom: 14px; }
+  .btn-lg { padding: 15px 22px; font-size: 14px; }
+  .section { padding: 48px 0; }
 }
+
+/* ===================================================
+   RESPONSIVE — Extra small (≤ 360px)
+   =================================================== */
+@media (max-width: 360px) {
+  .hero-title { font-size: 2rem; }
+  .trust-grid { grid-template-columns: 1fr; gap: 16px; }
+  .trust-item { flex-direction: row; text-align: left; align-items: flex-start; }
+  .logo-text strong { font-size: 1em; letter-spacing: 0.12em; }
+  .mobile-cta { padding: 12px 20px; font-size: 13px; }
+}
+
